@@ -1,15 +1,16 @@
 import string
+from art import logo
 
 def encrypt(alpha: list, text: str, shift: int) -> str:
     res = ""
     for letter in text:
-        if letter == " ":
-            res += " "
-        else:
+        if letter in alpha:
             s = int(alpha.index(letter))+shift
             if s > len(alpha):
                 s = s - len(alpha)
             res += alpha[s]
+        else:
+            res += letter
     return res
 
 def decrypt(alpha: list, text: str, shift: int) -> str:
@@ -27,21 +28,13 @@ def decrypt(alpha: list, text: str, shift: int) -> str:
 def main():
     again = True
     alphabet = list(string.ascii_lowercase)
+    print(logo)
     while again:
         choice = str(input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower())
         while not(choice == "encode" or choice == "decode"):
             choice = str(input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower())
-
-        text = input("Type your message:\n")
-        print(type(text))
-        while not(type(text) == str):
-            print("Please enter your message, not numbers")
-            text = input("Type your message:\n").lower()
-
+        text = str(input("Type your message:\n").lower())
         shift = int(input("Type the shift number:\n"))
-        while not(type(shift) == int):
-            print("Please enter a shift number")
-            text = str(input("Type the shift number:\n").lower())
         if choice == "encode":
             encode = encrypt(alphabet, text, shift)
             print("Here's the encoded message: " + encode)
