@@ -31,7 +31,6 @@ def main(stages = stages) -> None:
     print(logo)
     print("Welcome to the Hangman Game !")
     print("I choose a word and you have to find it, okay?")
-    print("Let's go")
     word = genRndWord(word_list)
     word_copy = word.copy()
     blank = genBlank(word)
