@@ -1,61 +1,6 @@
 from random import *
-
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+from hangman_words import word_list
+from hangman_art import stages, logo
 
 def genRndWord(words: list) -> str:
     print("Generating the word")
@@ -72,7 +17,7 @@ def findBlank(word: list, blank: list) -> bool:
     if blank == word:
         res = f"Congratulations! You have found the word {''.join(word)}"
     else:
-        res = "You have no more lives"
+        res = f"You have no more lives, the word was {''.join(word)}"
     return res
 
 def hangmanForLife(stages: list, life: int) -> str:
@@ -83,9 +28,11 @@ def hangmanForLife(stages: list, life: int) -> str:
     return res
 
 def main(stages = stages) -> None:
+    print(logo)
     print("Welcome to the Hangman Game !")
-    print("The game begins !")
-    word = genRndWord(['Computer', 'Hacker', 'Virus', 'Whistleblower', 'Payload', 'Malware', 'Backdoor'])
+    print("I choose a word and you have to find it, okay?")
+    print("Let's go")
+    word = genRndWord(word_list)
     word_copy = word.copy()
     blank = genBlank(word)
     life = 5
