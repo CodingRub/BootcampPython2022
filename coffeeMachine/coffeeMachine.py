@@ -24,7 +24,7 @@ def process_coins():
     total += int(input("how many nickles?: ")) * 0.05
     total += int(input("how many pennies?: ")) * 0.01
     return total
-
+ 
 def money_sufficient(total: int, coffee: str):
     res = True
     money_needed = menu[coffee]["cost"]
