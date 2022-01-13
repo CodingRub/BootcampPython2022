@@ -1,6 +1,5 @@
 from random import choice, randint, shuffle
 import string
-import pyperclip
 
 
 def pwdGen() -> str:
@@ -17,5 +16,4 @@ def pwdGen() -> str:
     for i in range(randint(2, 4)):
         res.append(str(choice(numbers)))
     shuffle(res)
-    pyperclip.copy(res)
     return ''.join(res)
