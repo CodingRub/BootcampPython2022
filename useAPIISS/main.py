@@ -37,21 +37,9 @@ def is_night():
         res = True
     return res 
 
-#If the ISS is close to my current position
-# and it is currently dark
-# Then send me an email to tell me to look up.
-# BONUS: run the code every 60 seconds.
-if not is_night():
-    print("Il fait jour !")
-else:
-    print("Il fait nuit")
-
 if is_iss_overhead() and not is_night():
-    sendemail("rub77indy@outlook.fr", "r16s22j29", "rubstr@protonmail.com", "Look up !", "The ISS is above you! However, you will have difficulty seeing it because of the sun :(")
+    sendemail(email, password, receive, "Look up !", "The ISS is above you! However, you will have difficulty seeing it because of the sun :(")
 else:
-    print("Nope")
 if is_iss_overhead() and is_night():
-    sendemail("rub77indy@outlook.fr", "r16s22j29", "rubstr@protonmail.com", "Look up !", "The ISS is above you! Get your telescope out quickly or try to take a picture of it!")
-else:
-    print("Nope")
+    sendemail(email, password, receive, "Look up !", "The ISS is above you! Get your telescope out quickly or try to take a picture of it!")
 
